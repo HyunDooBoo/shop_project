@@ -33,6 +33,8 @@ public abstract class Item {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CategoryItem> categoryItems = new HashSet<>();
 
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> likes = new ArrayList<>();
 
     //연관관계 편의 메서드
     public void addCategoryItem(CategoryItem categoryItem) {
