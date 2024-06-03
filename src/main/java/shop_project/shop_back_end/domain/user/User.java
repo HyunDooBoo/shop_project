@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import shop_project.shop_back_end.domain.BaseEntity;
+import shop_project.shop_back_end.domain.board.Board;
+import shop_project.shop_back_end.domain.like.Like;
 import shop_project.shop_back_end.domain.order.Order;
 import shop_project.shop_back_end.domain.user.util.Address;
 import shop_project.shop_back_end.domain.user.util.Role;
@@ -39,5 +41,19 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Board> boards = new ArrayList<>();
+
+    //연관관계 편의 메서드
+    public void addBoard(Board board){
+        boards.add(board);
+        board.setUser(this);
+    }
+
+    public void removeBoard(Board board){
+        boards.remove(board);
+        board.setUser(null);
+    }
 
 }
