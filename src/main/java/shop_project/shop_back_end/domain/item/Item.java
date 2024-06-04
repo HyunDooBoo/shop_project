@@ -6,6 +6,7 @@ import lombok.Setter;
 import shop_project.shop_back_end.domain.item.category.Category;
 import shop_project.shop_back_end.domain.item.category.CategoryItem;
 import shop_project.shop_back_end.domain.like.Like;
+import shop_project.shop_back_end.domain.manufacturer.Supply;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,6 +36,10 @@ public abstract class Item {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "supply_id")
+    private Supply supply;
 
     //연관관계 편의 메서드
     public void addCategoryItem(CategoryItem categoryItem) {
