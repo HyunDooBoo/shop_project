@@ -1,4 +1,4 @@
-package shop_project.shop_back_end.domain.user.util;
+package shop_project.shop_back_end.util;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;

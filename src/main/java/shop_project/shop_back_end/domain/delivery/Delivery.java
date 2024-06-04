@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import shop_project.shop_back_end.domain.delivery.util.DeliveryStatus;
 import shop_project.shop_back_end.domain.order.Order;
-import shop_project.shop_back_end.domain.user.util.Address;
+import shop_project.shop_back_end.util.Address;
 
 @Entity
 @Getter

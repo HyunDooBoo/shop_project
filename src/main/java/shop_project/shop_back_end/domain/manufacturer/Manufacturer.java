@@ -3,7 +3,7 @@ package shop_project.shop_back_end.domain.manufacturer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import shop_project.shop_back_end.domain.util.Address;
+import shop_project.shop_back_end.util.Address;
 
 import java.util.ArrayList;
 import java.util.List;

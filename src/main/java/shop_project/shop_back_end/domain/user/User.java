@@ -9,9 +9,9 @@ import shop_project.shop_back_end.domain.board.Board;
 import shop_project.shop_back_end.domain.item.cart.Cart;
 import shop_project.shop_back_end.domain.like.Like;
 import shop_project.shop_back_end.domain.order.Order;
-import shop_project.shop_back_end.domain.util.Address;
-import shop_project.shop_back_end.domain.util.Role;
-import shop_project.shop_back_end.domain.util.Sex;
+import shop_project.shop_back_end.util.Address;
+import shop_project.shop_back_end.util.Role;
+import shop_project.shop_back_end.util.Sex;
 
 import java.util.ArrayList;
 import java.util.List;
