@@ -1,9 +1,7 @@
 package shop_project.shop_back_end.domain.user;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import shop_project.shop_back_end.domain.BaseEntity;
 import shop_project.shop_back_end.domain.board.Board;
 import shop_project.shop_back_end.domain.item.cart.Cart;
@@ -19,6 +17,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class User extends BaseEntity {
 
@@ -30,7 +30,7 @@ public class User extends BaseEntity {
     private String nickname;
     private String password;
     private int age;
-    private String phone_num;
+    private String phoneNum;
     private String email;
 
     @Embedded
@@ -53,6 +53,8 @@ public class User extends BaseEntity {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
+
+
 
     //연관관계 편의 메서드
     public void addBoard(Board board){
