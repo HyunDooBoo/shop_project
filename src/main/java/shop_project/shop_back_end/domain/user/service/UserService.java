@@ -48,6 +48,15 @@ public class UserService {
         return user.getId();
     }
 
+    //닉네임 변경
+    @Transactional
+    public User updateNickName(Long userId, String newNickname){
+        validationDuplicateUserNickName(newNickname);
+        User user = findUser(userId);
+        user.setNickname(newNickname);
+        return userRepository.save(user);
+    }
+
     public User findUser(Long userId){
         return userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException(userId + "에 해당하는 유저가 없습니다."));
@@ -55,13 +64,6 @@ public class UserService {
 
     public List<User> findUsers(){
         return userRepository.findAll();
-    }
-
-    public void updateNickName(Long userId, String newNickName){
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException(userId + "에 해당하는 유저가 없습니다."));
-        user.setNickname(newNickName);
-        userRepository.save(user);
     }
 
     //닉네임 중복 검증

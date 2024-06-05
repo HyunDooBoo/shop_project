@@ -54,8 +54,6 @@ public class User extends BaseEntity {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
 
-
-
     //연관관계 편의 메서드
     public void addBoard(Board board){
         boards.add(board);
