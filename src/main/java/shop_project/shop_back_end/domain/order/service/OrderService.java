@@ -53,13 +53,8 @@ public class OrderService {
         order.cancel();
     }
 
-    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
-        return em.createQuery("select o from Order o" +
-                        " join fetch o.user u" +
-                        " join fetch o.delivery d", Order.class)
-                .setFirstResult(offset)
-                .setMaxResults(limit)
-                .getResultList();
+    public List<Order> findAllByUserId(Long userId) {
+        return orderRepository.findByUserId(userId);
     }
 
 }
