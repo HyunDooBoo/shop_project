@@ -1,0 +1,26 @@
+### signup
+#User Signup
+POST http://localhost:8080/api/users/signup
+Content-Type: application/json
+
+{
+  "username": "hyudoo",
+  "nickname": "bo5601",
+  "password": "asdasd",
+  "age": 15,
+  "email": "hyundoo1006@gmail.com",
+  "phoneNum": "010-3597-3141",
+  "city": "서울",
+  "street": "숙선웅주로",
+  "zipcode": "12312412",
+  "sex": "MAN"
+}
+
+### change
+#Nickname Change
+PUT http://localhost:8080/api/users/updateNick/1
+Content-Type: application/json
+
+{
+  "updateNick": "변경"
+}

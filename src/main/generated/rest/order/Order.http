@@ -1,0 +1,32 @@
+### order
+#Add Order
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "delivery": {
+    "address": {
+        "city": "서울",
+        "street": "중랑구",
+        "zipcode": "묵동"
+    },
+    "status": "READY"
+  },
+  "orderItemDtos": [
+    {
+      "itemId": 1,
+      "count": 2
+    },
+    {
+      "itemId": 2,
+      "count": 1
+    }
+  ]
+}
+
+###Get Order
+GET http://localhost:8080/api/orders/users/1
+
+###Delete Order
+DELETE http://localhost:8080/api/orders/1
