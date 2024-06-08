@@ -1,12 +1,12 @@
 package shop_project.shop_back_end.domain.item;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import shop_project.shop_back_end.common.exception.NotEnoughStockException;
 import shop_project.shop_back_end.domain.item.category.CategoryItem;
 import shop_project.shop_back_end.domain.like.Like;
-import shop_project.shop_back_end.domain.manufacturer.Supply;
+import shop_project.shop_back_end.domain.supplier.Supplier;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,6 +18,9 @@ import java.util.Set;
 @DiscriminatorColumn(name = "dtype")
 @Getter
 @Setter
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class Item {
 
     @Id
@@ -38,8 +41,8 @@ public abstract class Item {
     private List<Like> likes = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supply_id")
-    private Supply supply;
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
 
     //연관관계 편의 메서드
     public void addCategoryItem(CategoryItem categoryItem) {
