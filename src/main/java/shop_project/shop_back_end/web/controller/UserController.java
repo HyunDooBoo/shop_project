@@ -17,13 +17,13 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<Long> createUser(@RequestBody @Valid final UserRequest userRequest){
         Long userId = userService.join(userRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(userId);
     }
 
-    @PutMapping("/{userId}/updateNick")
+    @PutMapping("/updateNick/{userId}")
     public ResponseEntity<User> updateNickname(@PathVariable final Long userId,
                                                  @RequestBody @Valid final UpdateNickname updateNickname){
         User user = userService.updateNickName(userId, updateNickname.getUpdateNick());
