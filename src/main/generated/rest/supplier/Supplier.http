@@ -1,0 +1,26 @@
+### supplier
+#signup
+POST http://localhost:8080/api/supplier/signup
+Content-Type: application/json
+
+{
+  "username": "공급자",
+  "password": "12312412",
+  "phoneNum": "010-1123-1515",
+  "city": "서울",
+  "street": "숙선웅주로",
+  "zipcode": "12312412"
+}
+
+###Add Item
+POST http://localhost:8080/api/supplier/additem
+Content-Type: application/json
+
+{
+  "itemType": "Clothes",
+  "name": "반팔",
+  "price": 10000,
+  "stockQuantity": 124,
+  "fabric": "실크"
+}
+
