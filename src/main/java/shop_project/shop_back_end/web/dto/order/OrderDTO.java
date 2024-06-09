@@ -19,7 +19,6 @@ public class OrderDTO {
 
     private Long orderId;
     private String userName;
-    private String deliveryAddress;
     private List<OrderItemDTO> orderItems;
     private Address address;
     private OrderStatus status;

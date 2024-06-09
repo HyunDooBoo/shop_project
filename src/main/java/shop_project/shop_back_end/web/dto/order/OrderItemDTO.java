@@ -18,6 +18,7 @@ public class OrderItemDTO {
     private int orderPrice;
 
     public OrderItemDTO(OrderItem orderItem){
+        itemId = orderItem.getId();
         itemName = orderItem.getItem().getName();
         orderPrice = orderItem.getOrderPrice();
         count = orderItem.getCount();
