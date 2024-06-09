@@ -26,13 +26,13 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
     }
 
-    @DeleteMapping("/{orderId}")
+    @DeleteMapping("/delete/{orderId}")
     public ResponseEntity<Void> cancleOrder(@PathVariable Long orderId){
         orderService.cancelOrder(orderId);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/getOrder/{userId}")
     public ResponseEntity<List<OrderDTO>> getOrdersByUserId(@PathVariable Long userId){
         List<Order> orders = orderService.findAllByUserId(userId);
         List<OrderDTO> collect = orders.stream()

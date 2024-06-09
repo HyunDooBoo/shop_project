@@ -4,10 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shop_project.shop_back_end.domain.supplier.service.SupplierService;
 import shop_project.shop_back_end.web.dto.supplier.ItemForm;
 import shop_project.shop_back_end.web.dto.supplier.SupplierRequest;
@@ -26,9 +23,9 @@ public class SupplierController {
     }
 
     //임시 하드코딩
-    @PostMapping("/additem")
-    public ResponseEntity<Long> addItem(@RequestBody @Valid final ItemForm form){
-        Long itemId = supplierService.addItem(1L, form);
+    @PostMapping("/additem/{supplierId}")
+    public ResponseEntity<Long> addItem(@PathVariable final Long supplierId, @RequestBody @Valid final ItemForm form){
+        Long itemId = supplierService.addItem(supplierId, form);
         return ResponseEntity.status(HttpStatus.CREATED).body(itemId);
     }
 }
