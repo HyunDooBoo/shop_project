@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop_project.shop_back_end.domain.item.Item;
+import shop_project.shop_back_end.domain.item.category.Category;
+import shop_project.shop_back_end.domain.item.category.CategoryItem;
+import shop_project.shop_back_end.domain.item.category.repository.CategoryRepository;
 import shop_project.shop_back_end.domain.supplier.Supplier;
 import shop_project.shop_back_end.domain.supplier.repository.SupplierRepository;
 import shop_project.shop_back_end.util.Address;
@@ -18,6 +21,7 @@ import shop_project.shop_back_end.web.dto.supplier.SupplierRequest;
 public class SupplierService {
 
     private final SupplierRepository supplierRepository;
+    private final CategoryRepository categoryRepository;
 
     //공급자 회원 가입
     @Transactional
@@ -43,7 +47,17 @@ public class SupplierService {
     @Transactional
     public Long addItem(Long supplierId, ItemForm form){
         Supplier supplier = findSupplier(supplierId);
-        Item item = ItemFactory.createItem(form);
+
+        Category category = categoryRepository.findById(form.getCategoryId())
+                .orElseThrow(() -> new IllegalArgumentException(form.getCategoryId() + "번 카테고리는 없습니다"));
+
+        Item item = ItemFactory.createItem(form, category);
+
+        CategoryItem categoryItem = new CategoryItem();
+        categoryItem.setItem(item);
+        categoryItem.setCategory(category);
+        category.addCategoryItem(categoryItem);
+
         supplier.addItem(item);
         return item.getId();
     }

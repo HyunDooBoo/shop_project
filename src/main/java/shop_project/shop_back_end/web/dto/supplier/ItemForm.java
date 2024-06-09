@@ -12,6 +12,7 @@ public class ItemForm {
     private String name;
     private int price;
     private int stockQuantity;
+    private Long categoryId;
 
     //BOOK
     private String author;
