@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ###Add Item
-POST http://localhost:8080/api/supplier/additem
+POST http://localhost:8080/api/supplier/additem/1
 Content-Type: application/json
 
 {
@@ -21,6 +21,7 @@ Content-Type: application/json
   "name": "반팔",
   "price": 10000,
   "stockQuantity": 124,
-  "fabric": "실크"
+  "fabric": "실크",
+  "categoryId": 1
 }
 
