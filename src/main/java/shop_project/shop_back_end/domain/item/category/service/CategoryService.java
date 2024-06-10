@@ -3,8 +3,11 @@ package shop_project.shop_back_end.domain.item.category.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import shop_project.shop_back_end.domain.item.Item;
 import shop_project.shop_back_end.domain.item.category.Category;
+import shop_project.shop_back_end.domain.item.category.CategoryItem;
 import shop_project.shop_back_end.domain.item.category.repository.CategoryRepository;
+import shop_project.shop_back_end.domain.item.service.ItemService;
 import shop_project.shop_back_end.web.dto.category.CategoryDTO;
 
 @Service
@@ -13,6 +16,7 @@ import shop_project.shop_back_end.web.dto.category.CategoryDTO;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final ItemService itemService;
 
     @Transactional
     public Long save(CategoryDTO categoryDTO){
@@ -20,6 +24,21 @@ public class CategoryService {
         category.setName(categoryDTO.getName());
         categoryRepository.save(category);
         return category.getId();
+    }
+
+    public Category getCategory(Long categoryId){
+        return categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new IllegalArgumentException(categoryId + "번 카테고리는 없습니다"));
+    }
+
+    public void addItemToCategory(Long categoryId, Long itemId){
+        Category category = getCategory(categoryId);
+        Item item = itemService.getItem(itemId);
+
+        CategoryItem categoryItem = new CategoryItem();
+        categoryItem.setItem(item);
+        categoryItem.setCategory(category);
+        category.addCategoryItem(categoryItem);
     }
 
 }

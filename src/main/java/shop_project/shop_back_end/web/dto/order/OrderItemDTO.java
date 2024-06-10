@@ -15,12 +15,12 @@ public class OrderItemDTO {
     private Long itemId;
     private String itemName;
     private int count;
-    private int orderPrice;
+    private int totalPrice;
 
     public OrderItemDTO(OrderItem orderItem){
         itemId = orderItem.getId();
         itemName = orderItem.getItem().getName();
-        orderPrice = orderItem.getOrderPrice();
+        totalPrice = orderItem.getTotalPrice();
         count = orderItem.getCount();
     }
 }

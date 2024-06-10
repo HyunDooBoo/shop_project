@@ -22,7 +22,6 @@ public class SupplierController {
         return ResponseEntity.status(HttpStatus.CREATED).body(supplierId);
     }
 
-    //임시 하드코딩
     @PostMapping("/additem/{supplierId}")
     public ResponseEntity<Long> addItem(@PathVariable final Long supplierId, @RequestBody @Valid final ItemForm form){
         Long itemId = supplierService.addItem(supplierId, form);

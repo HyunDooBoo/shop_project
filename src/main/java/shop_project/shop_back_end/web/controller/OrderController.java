@@ -27,7 +27,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/delete/{orderId}")
-    public ResponseEntity<Void> cancleOrder(@PathVariable Long orderId){
+    public ResponseEntity<Void> cancelOrder(@PathVariable Long orderId){
         orderService.cancelOrder(orderId);
         return ResponseEntity.noContent().build();
     }
