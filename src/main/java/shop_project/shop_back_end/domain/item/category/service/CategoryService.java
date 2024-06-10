@@ -16,7 +16,6 @@ import shop_project.shop_back_end.web.dto.category.CategoryDTO;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
-    private final ItemService itemService;
 
     @Transactional
     public Long save(CategoryDTO categoryDTO){
@@ -31,10 +30,9 @@ public class CategoryService {
                 .orElseThrow(() -> new IllegalArgumentException(categoryId + "번 카테고리는 없습니다"));
     }
 
-    public void addItemToCategory(Long categoryId, Long itemId){
+    @Transactional
+    public void addItemToCategory(Long categoryId, Item item){
         Category category = getCategory(categoryId);
-        Item item = itemService.getItem(itemId);
-
         CategoryItem categoryItem = new CategoryItem();
         categoryItem.setItem(item);
         categoryItem.setCategory(category);
