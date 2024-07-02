@@ -26,7 +26,6 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
-    private final EntityManager em;
 
     @Transactional
     public Long Order(Long userId, Delivery delivery, List<OrderItemDTO> orderItemDtos){
